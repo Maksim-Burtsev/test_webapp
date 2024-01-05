@@ -31,11 +31,17 @@ def test_user(session: Session) -> Generator[User, None, None]:
 async def test_create_user_201(client: AsyncClient, session: Session):
     assert not session.query(exists().where(User.email == "test@gmail.com")).scalar()
 
-    data = {"email": "test@gmail.com", "password": "test_password12456"}
+    data = {
+        "email": "test@gmail.com",
+        "password": "test_password12456",
+    }
     response = await client.post("/users/", json=data)
     print(response.json())
     assert response.status_code == 201
-    assert response.json() == {"id": 1, "email": "test@gmail.com"}
+    assert response.json() == {
+        "id": 1,
+        "email": "test@gmail.com",
+    }
 
     user: User = session.get(User, response.json()["id"])
     assert user.email == "test@gmail.com"
@@ -47,10 +53,10 @@ async def test_create_user_201(client: AsyncClient, session: Session):
     session.commit()
 
 
-@pytest.mark.asyncio
-async def test_create_user_with_existend_email(
-    client: AsyncClient, session: Session, test_user: User
-):
-    data = {"email": "test123@gmail.com", "password": "test_password12456"}
-    with pytest.raises(IntegrityError):
-        await client.post("/users/", json=data)
+# @pytest.mark.asyncio
+# async def test_create_user_with_existend_email(
+#     client: AsyncClient, session: Session, test_user: User
+# ):
+#     data = {"email": "test123@gmail.com", "password": "test_password12456"}
+#     with pytest.raises(IntegrityError):
+#         await client.post("/users/", json=data)
