@@ -53,10 +53,10 @@ async def test_create_user_201(client: AsyncClient, session: Session):
     session.commit()
 
 
-# @pytest.mark.asyncio
-# async def test_create_user_with_existend_email(
-#     client: AsyncClient, session: Session, test_user: User
-# ):
-#     data = {"email": "test123@gmail.com", "password": "test_password12456"}
-#     with pytest.raises(IntegrityError):
-#         await client.post("/users/", json=data)
+@pytest.mark.asyncio
+async def test_create_user_with_existend_email(
+    client: AsyncClient, session: Session, test_user: User
+):
+    data = {"email": "test123@gmail.com", "password": "test_password12456"}
+    with pytest.raises(IntegrityError):
+        await client.post("/users/", json=data)
