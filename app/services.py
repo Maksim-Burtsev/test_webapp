@@ -1,6 +1,6 @@
-from models import User
-from schemas import UserCreateSchema
-from repositories import UserRepository
+from .models import User
+from .schemas import UserCreateSchema
+from .repositories import UserRepository
 
 
 class UserService:

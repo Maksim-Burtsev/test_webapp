@@ -2,10 +2,10 @@ from dependency_injector import containers, providers
 from sqlalchemy import orm
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 
-from repositories import UserRepository
-from services import UserService
+from .repositories import UserRepository
+from .services import UserService
 
-from settings import settings
+from .settings import settings
 
 
 class Container(containers.DeclarativeContainer):

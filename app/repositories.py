@@ -3,10 +3,10 @@ from contextlib import AbstractAsyncContextManager
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from models import User
-from schemas import UserCreateSchema
+from .models import User
+from .schemas import UserCreateSchema
 
-from helpers import hash_password
+from .helpers import hash_password
 
 
 class UserRepository:

@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-from views import router as users_router
+from .views import router as users_router
 
-from containers import Container
+from .containers import Container
 
 
 def create_app(container: Container = Container()) -> FastAPI:

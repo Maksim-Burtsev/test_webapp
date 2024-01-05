@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends
 from dependency_injector.wiring import Provide, inject
 
-from schemas import UserCreateSchema, UserSchema
-from services import UserService
+from .schemas import UserCreateSchema, UserSchema
+from .services import UserService
 
-from containers import Container
+from .containers import Container
 
 router = APIRouter(prefix="/users")
 
