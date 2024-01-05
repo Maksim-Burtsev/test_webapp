@@ -10,7 +10,7 @@ router = APIRouter(prefix="/users")
 
 
 @router.post(
-    "/users",
+    "/",
     status_code=201,
     response_model=UserSchema,
 )

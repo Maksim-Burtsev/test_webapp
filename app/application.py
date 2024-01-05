@@ -8,7 +8,7 @@ from .containers import Container
 def create_app(container: Container = Container()) -> FastAPI:
     app = FastAPI()
     app.container: Container = container
-    app.container.wire(["views"])
+    app.container.wire([".views"])
     app.include_router(users_router)
 
     return app
